@@ -7,7 +7,7 @@ import iaxios from "./iaxios"
 
 // }
 
-export type loginParams = {user_info: string, password: string}
+export type loginParams = {user_info: string, password: string, remember_me: boolean}
 export interface ILoginReturn {
     id: number,
     first_name: string,
@@ -19,7 +19,7 @@ export interface ILoginReturn {
     token: string
 }
 export function login(data: loginParams) {
-    return iaxios.post<ILoginReturn>('/api/login/', data)
+    return iaxios.post<ILoginReturn>('/login/', data)
 }
 
 export interface IRegisterParams {
@@ -36,5 +36,5 @@ export interface IRegisterReturn extends IRegisterParams {
     id: number
 }
 export function register(data: IRegisterParams) {
-    return iaxios.post<IRegisterReturn>('/api/register/', data)
+    return iaxios.post<IRegisterReturn>('/register/', data)
 }

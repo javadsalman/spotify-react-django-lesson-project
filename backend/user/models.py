@@ -30,4 +30,4 @@ class Artist(models.Model):
     verified = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.user.username
+        return self.user.get_full_name()

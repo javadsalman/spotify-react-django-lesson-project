@@ -10,15 +10,15 @@ export default function SearchList(props: ISearchListProps) {
         <div>
             <div className='text-4xl text-white font-bold ml-5 mb-3'>Songs</div>
             <div className='mb-10'>
-                <SongItem />
+                {/* <SongItem /> */}
             </div>
             <div className='text-4xl text-white font-bold ml-5 mb-5'>Playlist</div>
             <div className='grid grid-cols-5 gap-5'>
+                {/* <VerticalPlaylist />
                 <VerticalPlaylist />
                 <VerticalPlaylist />
                 <VerticalPlaylist />
-                <VerticalPlaylist />
-                <VerticalPlaylist />
+                <VerticalPlaylist /> */}
             </div>
         </div>
     );

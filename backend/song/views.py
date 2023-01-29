@@ -4,6 +4,7 @@ from .models import Playlist, Song, Genre
 from .serializers import (
     PlayListSerializer, SongSerializer, SongDetailSerializer
 )
+from .serializers import PlayListDetailSerializer
 
 # Create your views here.
 
@@ -12,7 +13,10 @@ class PlaylistListAV(ListCreateAPIView):
     serializer_class = PlayListSerializer
 class PlaylistDetailAV(RetrieveUpdateDestroyAPIView):
     queryset = Playlist.objects.filter(hide=False)
-    serializer_class = PlayListSerializer
+    serializer_class = PlayListDetailSerializer
+    
+    def get_serializer_context(self):
+        return {'request': self.request}
     
     
 class SongListAV(ListCreateAPIView):

@@ -31,11 +31,11 @@ export default function Profile (props: IProfileProps) {
       <div className='mt-5'>
         <div className='text-3xl text-white font-bold'>Public Playlists</div>
         <div className='grid grid-cols-5 py-5 gap-5'>
+            {/* <VerticalPlaylist />
             <VerticalPlaylist />
             <VerticalPlaylist />
             <VerticalPlaylist />
-            <VerticalPlaylist />
-            <VerticalPlaylist />
+            <VerticalPlaylist /> */}
         </div>
       </div>
     </div>

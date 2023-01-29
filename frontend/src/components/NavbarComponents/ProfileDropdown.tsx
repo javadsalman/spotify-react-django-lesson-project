@@ -2,10 +2,15 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { useAppDispatch } from '../../store/reduxhooks';
+import { logoutAction } from '../../store/slices/authSlice';
 
 export default function ProfileDropDown() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+
+  const dispatch = useAppDispatch()
+  
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -21,9 +26,10 @@ export default function ProfileDropDown() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        variant="contained"
+        style={{color: 'white', borderColor: 'white'}}
+        variant="outlined"
       >
-        Dashboard
+        Settings
       </Button>
       <Menu
         id="basic-menu"
@@ -36,7 +42,7 @@ export default function ProfileDropDown() {
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose} onClickCapture={() => dispatch(logoutAction())}>Logout</MenuItem>
       </Menu>
     </div>
   );

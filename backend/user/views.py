@@ -102,7 +102,7 @@ def unlike_playlist(request, pk):
 
 # Create your views here.
 @api_view(['POST'])
-@throttle_classes([AnonRateThrottle, UserRateThrottle])
+# @throttle_classes([AnonRateThrottle, UserRateThrottle])
 def register_view(request):
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):

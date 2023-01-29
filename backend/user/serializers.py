@@ -22,17 +22,17 @@ class RegisterSerializer(serializers.Serializer):
     username = serializers.CharField(source='user.username')
     email = serializers.EmailField(source='user.email')
     password = serializers.CharField(source='user.password', write_only=True)
-    birth_date = serializers.DateField(input_formats=['%Y.%m.%d'])
+    birth_date = serializers.DateField(input_formats=['%Y-%m-%d'])
     gender = serializers.ChoiceField(choices=GENDER_CHOICES)
     token = serializers.SerializerMethodField()
     
     def create(self, validated_data):
-        user_info = validated_data.pop('user')
+        user_info: dict[str, str] = validated_data.pop('user')
         user = User.objects.create_user(**user_info)
         customer = Customer.objects.create(user = user, **validated_data)
         return customer
     
-    def get_token(self, customer):
+    def get_token(self, customer: Customer):
         token, created = Token.objects.get_or_create(user=customer.user)
         return token.key
     

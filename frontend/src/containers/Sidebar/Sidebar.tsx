@@ -5,6 +5,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import { NavLink } from "react-router-dom";
 
 export interface ISidebarProps {
 }
@@ -17,33 +18,39 @@ export default function Sidebar(props: ISidebarProps) {
             </div>
             <List className='text-white'>
                 <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <HomeIcon className='text-white' />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItemButton>
+                    <NavLink to="/">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <HomeIcon className='text-white' />
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItemButton>
+                    </NavLink>
                 </ListItem>
                 <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <SearchIcon  className='text-white'/>
-                        </ListItemIcon>
-                        <ListItemText primary="Search" />
-                    </ListItemButton>
+                    <NavLink to="/search">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <SearchIcon className='text-white' />
+                            </ListItemIcon>
+                            <ListItemText primary="Search" />
+                        </ListItemButton>
+                    </NavLink>
                 </ListItem>
             </List>
 
             <List className='text-white'>
                 <ListItem disablePadding>
-                    <ListItemButton>
-                        <ListItemIcon>
-                            <FavoriteRoundedIcon  className='text-white'/>
-                        </ListItemIcon>
-                        <ListItemText primary="Liked Songs" />
-                    </ListItemButton>
+                    <NavLink to="/liked-songs">
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <FavoriteRoundedIcon className='text-white' />
+                            </ListItemIcon>
+                            <ListItemText primary="Liked Songs" />
+                        </ListItemButton>
+                    </NavLink>
                 </ListItem>
-                <Divider className='bg-white'/>
+                <Divider className='bg-white' />
             </List>
         </div>
     );
