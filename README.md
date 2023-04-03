@@ -18,7 +18,7 @@ After downloading Docker open terminal and go to directory of docker-compose.yml
 
 After all just write `docker compose up` command. You will have to wait to build images and start the app for a while. When it ends you can open site from [http://localhost:3000](http://localhost:3000) address.
 
-Also you can access to admin panel via this link: [http://localhost:8000/admin/](http://localhost:8000/admin/).
+Also you can access to admin panel via this link: [http://localhost:8000/admin/](http://localhost:8000/admin/). Username and password is just `admin`.
 
 ## 📷 Screenshots
 ### Home
