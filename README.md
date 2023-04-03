@@ -21,22 +21,32 @@ After all just write `docker compose up` command. You will have to wait to build
 Also you can access to admin panel via this link: [http://localhost:8000/admin/](http://localhost:8000/admin/).
 
 ## 📷 Screenshots
+### Home
 ![home](./screenshots/home.PNG)
 
+### Playlist
 ![playlist](./screenshots/playlist_page.PNG)
 
+### Profile
 ![profile](./screenshots/profile.PNG)
 
+### Genres
 ![searching](./screenshots/searching.PNG)
 
+### Search
 ![search](./screenshots/search.PNG)
 
+### Login
 ![login](./screenshots/login.PNG)
 
+### Register
 ![register](./screenshots/register.PNG)
 
+### Admin Panel
 ![admin_panel](./screenshots/admin_panel.PNG)
 
+### Admin Panel Customer
 ![admin_panel_customer](./screenshots/admin_panel_customer.PNG)
 
+### Admin Panel Genre
 ![admin_panel_genre](./screenshots/admin_panel_genre.PNG)
