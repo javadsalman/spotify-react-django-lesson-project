@@ -3,8 +3,7 @@ import Actionbar from '../containers/Actionbar/Actionbar'
 import Navbar from '../containers/Navbar/Navbar'
 import Sidebar from '../containers/Sidebar/Sidebar'
 import { Snackbar, Alert } from '@mui/material'
-import { useSelector } from 'react-redux'
-import { closeToast, INotficiationState, IToast } from '../store/slices/notificationSlice'
+import { closeToast } from '../store/slices/notificationSlice'
 import { useAppDispatch, useAppSelector } from '../store/reduxhooks'
 
 interface LayoutProps {

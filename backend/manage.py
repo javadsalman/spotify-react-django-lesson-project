@@ -7,6 +7,7 @@ import dotenv
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+    # if project running by docker, don't load .env file in this directory
     if os.getenv('DOCKER_ENV') != 'True':
         dotenv.load_dotenv()
     try:

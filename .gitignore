@@ -12,7 +12,7 @@ frontend/coverage
 frontend/build
 
 # misc
-.env
+backend/.env
 .DS_Store
 .env.local
 .env.development.local
@@ -27,3 +27,6 @@ __pycache__
 activate.bat
 db.sqlite3
 projectenv
+/data
+/backend/media/*
+!/backend/media

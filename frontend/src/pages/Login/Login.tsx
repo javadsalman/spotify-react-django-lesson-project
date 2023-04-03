@@ -1,11 +1,8 @@
-import { Checkbox, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, TextField } from '@mui/material';
+import { Checkbox, FormControlLabel, TextField } from '@mui/material';
 import React from 'react';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { loginAction } from '../../store/slices/authSlice';
-import { useAppDispatch, useAppSelector } from '../../store/reduxhooks';
+import { useAppDispatch } from '../../store/reduxhooks';
 
 
 const darkTheme = createTheme({

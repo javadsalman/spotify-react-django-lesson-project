@@ -27,6 +27,7 @@ urlpatterns = [
     path('api/', include(api_patterns))
 ]
 
+# if AWS s3 is not used, add static files to urlpatterns
 if getenv('STORAGE') != 'AWS_S3':
     from django.conf import settings
     from django.conf.urls.static import static

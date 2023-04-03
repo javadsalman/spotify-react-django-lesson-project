@@ -1,12 +1,9 @@
 import { Divider, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import spotifyLogo from '../../assets/images/spotify-logo.png'
 import HomeIcon from '@mui/icons-material/Home';
 import SearchIcon from '@mui/icons-material/Search';
-import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import { NavLink } from "react-router-dom";
-import { useAppSelector } from '../../store/reduxhooks';
 
 export interface ISidebarProps {
 }
