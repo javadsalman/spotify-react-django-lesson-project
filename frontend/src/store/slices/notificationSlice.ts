@@ -1,7 +1,7 @@
 import { AlertColor } from "@mui/material/Alert"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-
+// Toast component is at frontend\src\components\Toast.tsx
 export interface IToast {
     open: boolean,
     type: AlertColor | undefined,

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getPlaylistDetail } from '../../api/songApi';
 import { useAppDispatch } from '../../store/reduxhooks';
-import playlist, { setPlaylist, setPlaylistAction } from '../../store/slices/playlistSlice';
+import { setPlaylistAction } from '../../store/slices/playlistSlice';
 import { IPlaylist } from '../../types';
 import PlayButton from '../UI/PlayButton';
 
@@ -16,6 +16,7 @@ export default function VerticalPlaylist (props: IVerticalPlaylistProps) {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
+  // play playlist when play button is clicked and stop propagation to prevent navigate to playlist page
   const clickHandler = React.useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
     getPlaylistDetail(props.playlist.id).then(res => {
@@ -23,6 +24,7 @@ export default function VerticalPlaylist (props: IVerticalPlaylistProps) {
     })
   }, [dispatch, props.playlist.id])
 
+  // navigate to clicked playlist page
   const playlistClickHandler = React.useCallback(() => {
     navigate(`/playlists/${props.playlist.id}/`)
   }, [navigate, props.playlist.id])

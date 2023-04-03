@@ -8,11 +8,7 @@ const iaxios = axios.create({
 
 export default iaxios
 
-
+// set token to axios instance to use it in every request those need authentication
 export function setTokenToAxios(token: string) {
     iaxios.defaults.headers.common['Authorization'] = `Token ${token}`
-}
-
-export function removeTokenFromAxios() {
-    delete iaxios.defaults.headers.common['Authorization']
 }

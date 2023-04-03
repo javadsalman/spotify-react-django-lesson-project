@@ -16,6 +16,7 @@ export default function HorizontalPlaylist (props: IHorizontalPlaylistProps) {
 
   const dispatch = useAppDispatch();
 
+  // play playlist when play button is clicked and stop propagation to prevent navigate to playlist page
   const clickHandler = React.useCallback((e: React.MouseEvent) => {
     e.stopPropagation()
     getPlaylistDetail(props.playlist.id).then(res => {
@@ -23,6 +24,7 @@ export default function HorizontalPlaylist (props: IHorizontalPlaylistProps) {
     })
   }, [dispatch, props.playlist.id])
 
+  // navigate to clicked playlist page
   const playlistClickHandler = React.useCallback(() => {
     navigate(`/playlists/${props.playlist.id}/`)
   }, [navigate, props.playlist.id])

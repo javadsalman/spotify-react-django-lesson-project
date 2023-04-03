@@ -5,6 +5,7 @@ from colorfield.fields import ColorField
 
 class Genre(models.Model):
     title = models.CharField(max_length=20)
+    color = ColorField()
     updated = models.DateField(auto_now=True)
     created = models.DateField(auto_now_add=True)
     

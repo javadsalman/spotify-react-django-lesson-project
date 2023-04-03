@@ -27,3 +27,8 @@ urlpatterns = [
     path('api/', include(api_patterns))
 ]
 
+if getenv('STORAGE') != 'AWS_S3':
+    from django.conf import settings
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

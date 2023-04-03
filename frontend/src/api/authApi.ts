@@ -1,25 +1,10 @@
-
-
-// interface loginType <T, V>{user_info: T, password: V}
-// export function login({user_info, password}: loginType<string, number>) {
-
+import { IAuthInfo, ICustomerProfile } from "../types"
 import iaxios from "./iaxios"
 
-// }
-
 export type loginParams = {user_info: string, password: string, remember_me: boolean}
-export interface ILoginReturn {
-    id: number,
-    first_name: string,
-    last_name: string,
-    username: string,
-    email: string,
-    birth_date: string,
-    gender: string,
-    token: string
-}
+
 export function login(data: loginParams) {
-    return iaxios.post<ILoginReturn>('/login/', data)
+    return iaxios.post<IAuthInfo>('/login/', data)
 }
 
 export interface IRegisterParams {
@@ -31,10 +16,18 @@ export interface IRegisterParams {
     gender: string,
     birth_date: string,
 }
-export interface IRegisterReturn extends IRegisterParams {
-    token: string,
-    id: number
-}
+
 export function register(data: IRegisterParams) {
-    return iaxios.post<IRegisterReturn>('/register/', data)
+    return iaxios.post<IAuthInfo>('/register/', data)
+}
+
+
+export function getProfile() {
+    return iaxios.get<ICustomerProfile>('/customer-profile/')
+}
+
+export function uploadProfilePhoto(file: File) {
+    const formData = new FormData()
+    formData.append('image', file)
+    return iaxios.patch('/customer-image-upload/', formData)
 }

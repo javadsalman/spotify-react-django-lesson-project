@@ -15,6 +15,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
   const {open: toastOpen, type: toastType, message: toastMessage} = useAppSelector(state => state.notification.toast)
   const dispatch = useAppDispatch()
   const toastClose = () => {dispatch(closeToast())}
+  const isLoggedIn = useAppSelector((state) => state.auth.authStatus) === 'loggedIn';
   
   
   return (
@@ -25,7 +26,7 @@ const Layout: React.FC<LayoutProps> = (props) => {
               <Navbar />
               {props.children}
           </div>
-          <Actionbar />
+          {isLoggedIn && <Actionbar />}
       </div>
       <Snackbar open={toastOpen} anchorOrigin={{ vertical: 'top', horizontal: 'right' }} autoHideDuration={6000} onClose={toastClose}>
         <Alert onClose={toastClose} severity={toastType} sx={{ width: '100%' }}>

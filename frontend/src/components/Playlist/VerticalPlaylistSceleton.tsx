@@ -1,10 +1,8 @@
 
-import * as React from 'react';
-import PlayButton from '../UI/PlayButton';
 import Skeleton from '@mui/material/Skeleton';
 
 
-
+// this component is used to show a skeleton when the data is loading
 export interface IVerticalPlaylistSceletonProps {
 }
 

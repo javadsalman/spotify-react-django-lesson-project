@@ -1,4 +1,4 @@
-import { PlaylistsType } from "../types"
+import { GenreSummriesType, IPlaylistDetail, PlaylistsType, SongsType } from "../types"
 import iaxios from "./iaxios"
 
 
@@ -11,7 +11,7 @@ export const getPlaylists = () => {
 }
 
 export const getPlaylistDetail =(id: number) => {
-    return iaxios.get(`/playlists/${id}/`)
+    return iaxios.get<IPlaylistDetail>(`/playlists/${id}/`)
 }
 
 export const likeSong = (id: number) => {
@@ -28,4 +28,24 @@ export const likePlaylist = (id: number) => {
 
 export const unlikePlaylist = (id: number) => {
     return iaxios.post(`/unlike-playlist/${id}/`)
+}
+
+export const getLikedSongs = () => {
+    return iaxios.get<SongsType>('/liked-songs/')
+}
+
+export const getGenreList = () => {
+    return iaxios.get<GenreSummriesType>('/genres/')
+}
+
+export const getGenreDetail = (id: string) => {
+    return iaxios.get(`/genres/${id}/`)
+}
+
+export const searchSongs = (query: string) => {
+    return iaxios.get<SongsType>(`/songs/?search=${query}`)
+}
+
+export const searchPlaylists = (query: string) => {
+    return iaxios.get<PlaylistsType>(`/playlists/?search=${query}`)
 }

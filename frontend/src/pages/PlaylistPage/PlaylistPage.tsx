@@ -4,7 +4,8 @@ import { getPlaylistDetail } from '../../api/songApi';
 import { useAppDispatch } from '../../store/reduxhooks';
 import { setPlaylistAction } from '../../store/slices/playlistSlice';
 import { IPlaylistDetail } from '../../types';
-import Playlist from '../Playlist/Playlist';
+import Playlist from '../../containers/Playlist/Playlist';
+import { getSongsDuration, getArtistName } from '../../shared/utils/playlist-utils';
 
 export interface IPlaylistPageProps {
 }
@@ -16,35 +17,14 @@ export default function PlaylistPage (props: IPlaylistPageProps) {
 
   const dispatch = useAppDispatch();
 
-  const artists = React.useMemo(() => {
-    if (!playlistDetail) return '';
-    const artistSet = new Set()
-    playlistDetail.songs.forEach(song => {
-      song.artists.forEach(artist => {
-        artistSet.add(artist)
-      })
-    })
-    const artistList = Array.from(artistSet)
-    let result = artistList.slice(0,2).join(', ')
-    const otherARtists = artistList.slice(2)
-    if (otherARtists.length > 0) {
-      result += ` and ${otherARtists.length} more`
-    }
-    return result
+  // get artists and durations as readable string
+  const [artists, durations] = React.useMemo(() => {
+    if (!playlistDetail) return ['','']
+    const songs = playlistDetail.songs;
+    return [getArtistName(songs), getSongsDuration(songs)]
   }, [playlistDetail])
 
-  const durations = React.useMemo(() => {
-    if (!playlistDetail) return '';
-    let totalDuration = 0;
-    playlistDetail.songs.forEach(song => {
-      totalDuration += song.duration
-    })
-    const totalMinute = Math.floor(totalDuration / 60)
-    const resultMinute = totalMinute % 60
-    const resultHour = Math.floor(totalMinute / 60)
-    return `${playlistDetail.songs.length} Songs, about ${resultHour} hr ${resultMinute} min`
-  }, [playlistDetail])
-
+  // get playlist detail
   React.useEffect(() => {
     if (!id) return;
     getPlaylistDetail(+id).then(response => {
@@ -52,6 +32,7 @@ export default function PlaylistPage (props: IPlaylistPageProps) {
     })
   }, [id])
 
+  // play playlist
   const playPlaylistHandler = React.useCallback(() => {
     dispatch(setPlaylistAction({playlist: playlistDetail!}))
   }, [dispatch, playlistDetail])

@@ -1,5 +1,7 @@
-import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ISong } from "../../types";
+
+// player for playing song is managed from here
 
 interface IState {
    songId: number;
@@ -11,6 +13,7 @@ interface IState {
    audioCurrentTime: number;
    audioVolume: number;
    audioIsPlaying: boolean;
+   shouldPlay: boolean,
    songLiked: boolean;
 }
 
@@ -24,6 +27,7 @@ const initialState: IState = {
    audioCurrentTime: 0,
    audioVolume: 1,
    audioIsPlaying: false,
+   shouldPlay: false,
    songLiked: false,
 };
 
@@ -38,18 +42,20 @@ export const playerSlice = createSlice({
          state.songArtists = action.payload.song.artists.join(", ");
          state.songLiked = action.payload.song.liked;
          state.songId = action.payload.song.id;
-         state.audioIsPlaying = action.payload.play;
+         state.shouldPlay = action.payload.play;
       },
+
       setAudioIsPlaying: (state, action: PayloadAction<boolean>) => {
          state.audioIsPlaying = action.payload;
       },
       toggleAudioIsPlaying: (state, action) => {
          return {...state, audioIsPlaying: !state.audioIsPlaying}
       },
+      // set audio volume
       setVolume(state, action: PayloadAction<number>) {
          state.audioVolume = action.payload;
       },
-      setPlayerSongLike(state, action) {
+      setPlayerSongLikedStatus(state, action) {
          state.songLiked = action.payload;
       },
    },
@@ -60,5 +66,5 @@ export const {
    toggleAudioIsPlaying,
    setAudioIsPlaying,
    setVolume,
-   setPlayerSongLike,
+   setPlayerSongLikedStatus,
 } = playerSlice.actions;

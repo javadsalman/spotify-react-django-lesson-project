@@ -2,14 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from rest_framework.decorators import api_view, throttle_classes, permission_classes
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, parsers
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import (
     ListAPIView,
     ListCreateAPIView, 
     RetrieveUpdateDestroyAPIView,
-    RetrieveAPIView
+    RetrieveAPIView,
+    UpdateAPIView
 )
 from .serializers import (
     RegisterSerializer,
@@ -25,6 +26,7 @@ from song.models import (
     Playlist, Song
 )
 from .models import Artist, Customer
+from .permissions import CustomerPermission
 
 
 class CustomerProfileDetailAV(RetrieveAPIView):
@@ -32,6 +34,14 @@ class CustomerProfileDetailAV(RetrieveAPIView):
         return self.request.user.customer
     serializer_class = CustomerProfileSerializer
     permission_classes = [IsAuthenticated]
+    
+class CustomerProfileUploadAV(UpdateAPIView):
+    def get_object(self):
+        return self.request.user.customer
+    serializer_class = CustomerProfileSerializer
+    permission_classes = [IsAuthenticated, CustomerPermission]
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser]
+    
 
 class LikedPlaylistListAV(ListAPIView):
     def get_queryset(self):
@@ -104,6 +114,7 @@ def unlike_playlist(request, pk):
 @api_view(['POST'])
 # @throttle_classes([AnonRateThrottle, UserRateThrottle])
 def register_view(request):
+    print('register', request.data)
     serializer = RegisterSerializer(data=request.data)
     if serializer.is_valid(raise_exception=True):
         serializer.save()

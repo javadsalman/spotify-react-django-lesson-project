@@ -11,7 +11,6 @@ export default function SongInfo (props: ISongInfoProps) {
   
   const dispatch = useAppDispatch();
 
-  
   const likeSongHandler = React.useCallback(() => {
     dispatch(toggleLikeSongAction(playerState.songId))
   }, [dispatch, playerState.songId])

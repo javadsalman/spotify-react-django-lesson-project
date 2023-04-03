@@ -1,0 +1,2104 @@
+{
+	"info": {
+		"_postman_id": "901e5964-fade-4159-96e9-a1a9384f443b",
+		"name": "Spotify",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18821249"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Customer",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"first_name\": \"Ehmed\",\r\n    \"last_name\": \"Ehmedov\",\r\n    \"username\": \"ehmed\",\r\n    \"email\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"gender\": \"male\",\r\n    \"birth_date\": \"2006.01.01\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/register/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"register",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Register",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"first_name\": \"Ehmed\",\r\n    \"last_name\": \"Ehmedov\",\r\n    \"username\": \"ehmed\",\r\n    \"email\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\",\r\n    \"gender\": \"male\",\r\n    \"birth_date\": \"2006.01.01\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/register/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"register",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:01:44 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "192"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"first_name\": \"Ehmed\",\n    \"last_name\": \"Ehmedov\",\n    \"username\": \"ehmed\",\n    \"email\": \"ehmed@gmail.com\",\n    \"birth_date\": \"2006-01-01T00:00:00Z\",\n    \"gender\": \"male\",\n    \"token\": \"eb43456bc7a456f60f264bb68636388bcb4c81ae\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_info\": \"eli\",\r\n    \"password\": \"Your password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/login/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"login",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_info\": \"ehmed1@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/login/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"login",
+												""
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:18:42 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "OPTIONS, POST"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "49"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"User info or password is incorrect!\"\n}"
+								},
+								{
+									"name": "Login",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/login/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"login",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:36:45 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "189"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 9,\n    \"first_name\": \"Ehmed\",\n    \"last_name\": \"Ehmedov\",\n    \"username\": \"ehmed\",\n    \"email\": \"ehmed@gmail.com\",\n    \"birth_date\": \"2006-01-01\",\n    \"gender\": \"male\",\n    \"token\": \"eb43456bc7a456f60f264bb68636388bcb4c81ae\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Customer Profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/customer-profile/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"customer-profile",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Artist",
+					"item": [
+						{
+							"name": "Artist List",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/artists/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"artists",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Artist List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/artists/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"artists",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:58:55 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1536"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 3,\n        \"first_name\": \"Dilare\",\n        \"last_name\": \"Kazimova\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/dilare.jpg\",\n        \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_3.jpg\",\n        \"verified\": true\n    },\n    {\n        \"id\": 2,\n        \"first_name\": \"Maroon\",\n        \"last_name\": \"\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/maroon.jpg\",\n        \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_4.jpg\",\n        \"verified\": true\n    },\n    {\n        \"id\": 4,\n        \"first_name\": \"Jony\",\n        \"last_name\": \"\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/jony.jpeg\",\n        \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_4.jpg\",\n        \"verified\": false\n    },\n    {\n        \"id\": 5,\n        \"first_name\": \"Bazzi\",\n        \"last_name\": \"\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/bazzi.webp\",\n        \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_2.jpg\",\n        \"verified\": true\n    },\n    {\n        \"id\": 6,\n        \"first_name\": \"\",\n        \"last_name\": \"\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/gettyimages-1235223332_sq-018166785ff8ed3e47c6e014e0f58618be107ddf.jpg\",\n        \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_4.jpg\",\n        \"verified\": true\n    },\n    {\n        \"id\": 1,\n        \"first_name\": \"Bethoven\",\n        \"last_name\": \"\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/Beethoven.jpg\",\n        \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_3.jpg\",\n        \"verified\": false\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Artist Detail",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/artists/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"artists",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Artist Detail",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/artists/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"artists",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:59:10 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1029"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"first_name\": \"Bethoven\",\n    \"last_name\": \"\",\n    \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/Beethoven.jpg\",\n    \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_3.jpg\",\n    \"verified\": false,\n    \"songs\": [\n        {\n            \"id\": 6,\n            \"title\": \"Phonk Remix\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/Beethoven.jpg\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_BEETHOVEN_CLASSICAL_PHONK_REMIX_BY_MADEINNLINE.mp3\",\n            \"duration\": 160,\n            \"lyrics\": \"\",\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                1\n            ],\n            \"genres\": [\n                4,\n                5\n            ],\n            \"playlists\": [\n                2,\n                4,\n                5\n            ]\n        },\n        {\n            \"id\": 1,\n            \"title\": \"Bazzy Fantazy\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/bazzi.webp\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/bazzi-fantasy-mp3.mp3\",\n            \"duration\": 180,\n            \"lyrics\": \"\",\n            \"listen_count\": 0,\n            \"updated\": \"2023-04-02\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                2,\n                1\n            ],\n            \"genres\": [\n                4,\n                2\n            ],\n            \"playlists\": [\n                1,\n                2\n            ]\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Song",
+			"item": [
+				{
+					"name": "Playlist",
+					"item": [
+						{
+							"name": "Playlist LIst",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/playlists/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"playlists",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Playlist LIst",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/playlists/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"playlists",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:33:18 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1219"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"author\": {\n            \"first_name\": \"Intiqam\",\n            \"last_name\": \"Memmedli\",\n            \"username\": \"intigam\",\n            \"email\": \"\",\n            \"birth_date\": \"2023-01-11\",\n            \"gender\": \"male\",\n            \"token\": \"da5e26903feea9708a61e4b49290e91b22eff487\"\n        },\n        \"title\": \"Icende yaxsi geden mahnilar\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/dfasdfsadf.webp\",\n        \"color\": \"#29DDFF\",\n        \"featured\": false,\n        \"updated\": \"2023-01-09\",\n        \"created\": \"2023-01-09\"\n    },\n    {\n        \"id\": 2,\n        \"author\": {\n            \"first_name\": \"Asif\",\n            \"last_name\": \"Seferov\",\n            \"username\": \"SafaroW\",\n            \"email\": \"\",\n            \"birth_date\": \"2023-01-11\",\n            \"gender\": \"male\",\n            \"token\": \"6af34fe7a7effb85d0baf7b83bf0108748960df7\"\n        },\n        \"title\": \"zor mahnilar\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/e925387d9708ae8ba1814e51fbf6c2d1.640x640x1.jpg\",\n        \"color\": \"#2942FF\",\n        \"featured\": true,\n        \"updated\": \"2023-01-09\",\n        \"created\": \"2023-01-09\"\n    },\n    {\n        \"id\": 3,\n        \"author\": {\n            \"first_name\": \"Fuad\",\n            \"last_name\": \"Qasimov\",\n            \"username\": \"fuad\",\n            \"email\": \"\",\n            \"birth_date\": \"2023-01-11\",\n            \"gender\": \"male\",\n            \"token\": \"63e8e0626630fcbce12fd9e4094211c5efb4dc9a\"\n        },\n        \"title\": \"Xarici mahnilar\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/bhutdojgtd.jpg\",\n        \"color\": \"#361072\",\n        \"featured\": false,\n        \"updated\": \"2023-01-10\",\n        \"created\": \"2023-01-10\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Playlist Detail",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/playlists/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"playlists",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Playlist LIst",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/playlists/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"playlists",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:33:18 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1219"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"author\": {\n            \"first_name\": \"Intiqam\",\n            \"last_name\": \"Memmedli\",\n            \"username\": \"intigam\",\n            \"email\": \"\",\n            \"birth_date\": \"2023-01-11\",\n            \"gender\": \"male\",\n            \"token\": \"da5e26903feea9708a61e4b49290e91b22eff487\"\n        },\n        \"title\": \"Icende yaxsi geden mahnilar\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/dfasdfsadf.webp\",\n        \"color\": \"#29DDFF\",\n        \"featured\": false,\n        \"updated\": \"2023-01-09\",\n        \"created\": \"2023-01-09\"\n    },\n    {\n        \"id\": 2,\n        \"author\": {\n            \"first_name\": \"Asif\",\n            \"last_name\": \"Seferov\",\n            \"username\": \"SafaroW\",\n            \"email\": \"\",\n            \"birth_date\": \"2023-01-11\",\n            \"gender\": \"male\",\n            \"token\": \"6af34fe7a7effb85d0baf7b83bf0108748960df7\"\n        },\n        \"title\": \"zor mahnilar\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/e925387d9708ae8ba1814e51fbf6c2d1.640x640x1.jpg\",\n        \"color\": \"#2942FF\",\n        \"featured\": true,\n        \"updated\": \"2023-01-09\",\n        \"created\": \"2023-01-09\"\n    },\n    {\n        \"id\": 3,\n        \"author\": {\n            \"first_name\": \"Fuad\",\n            \"last_name\": \"Qasimov\",\n            \"username\": \"fuad\",\n            \"email\": \"\",\n            \"birth_date\": \"2023-01-11\",\n            \"gender\": \"male\",\n            \"token\": \"63e8e0626630fcbce12fd9e4094211c5efb4dc9a\"\n        },\n        \"title\": \"Xarici mahnilar\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/bhutdojgtd.jpg\",\n        \"color\": \"#361072\",\n        \"featured\": false,\n        \"updated\": \"2023-01-10\",\n        \"created\": \"2023-01-10\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Liked Plyalists",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/liked-playlists/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"liked-playlists",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Liked Plyalists",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/liked-playlists/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"liked-playlists",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:35:05 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "410"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"author\": {\n            \"first_name\": \"Intiqam\",\n            \"last_name\": \"Memmedli\",\n            \"username\": \"intigam\",\n            \"email\": \"\",\n            \"birth_date\": \"2023-01-11\",\n            \"gender\": \"male\",\n            \"token\": \"da5e26903feea9708a61e4b49290e91b22eff487\"\n        },\n        \"title\": \"Icende yaxsi geden mahnilar\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/dfasdfsadf.webp\",\n        \"color\": \"#29DDFF\",\n        \"featured\": false,\n        \"updated\": \"2023-01-09\",\n        \"created\": \"2023-01-09\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Like Playlist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/like-playlist/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"like-playlist",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Playlist LIst Copy",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/like-playlist/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"like-playlist",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:35:00 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Unlike Playlist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/unlike-playlist/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"unlike-playlist",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Playlist LIst Copy",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/like-playlist/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"like-playlist",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Wed, 11 Jan 2023 16:35:00 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Playlist Search",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/playlists/?search=happy",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"playlists",
+										""
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "happy"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Playlist Search",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/playlists/?search=happy",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"playlists",
+												""
+											],
+											"query": [
+												{
+													"key": "search",
+													"value": "happy"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:55:33 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "822"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 2,\n        \"author\": {\n            \"id\": 3,\n            \"first_name\": \"Elmeddin\",\n            \"last_name\": \"\",\n            \"username\": \"elmeddin\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/customer/images/asdgfasdg.webp\"\n        },\n        \"title\": \"Happy Songs\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/maxresdefault.jpg\",\n        \"color\": \"#2FFF6B\",\n        \"featured\": true,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"hide\": false\n    },\n    {\n        \"id\": 4,\n        \"author\": {\n            \"id\": 3,\n            \"first_name\": \"Elmeddin\",\n            \"last_name\": \"\",\n            \"username\": \"elmeddin\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/customer/images/asdgfasdg.webp\"\n        },\n        \"title\": \"Happy Music\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/playlists/images/b7d4c26531db7fc9a61ce1bbe8f480eb.jpg\",\n        \"color\": \"#74EFFF\",\n        \"featured\": true,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"hide\": false\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Song",
+					"item": [
+						{
+							"name": "Song List",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/songs/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"songs",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Song List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": []
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/songs/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"songs",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:42:12 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "3525"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 2,\n        \"title\": \"Zvezda\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/jony.jpeg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/jony-zvezda-mp3.mp3\",\n        \"duration\": 200,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            4\n        ],\n        \"genres\": [\n            4,\n            1\n        ],\n        \"playlists\": [\n            4,\n            5,\n            3\n        ]\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Jazzy\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/Maroon_5_Moves_Like_Jagger_cover.png\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/Maroon_5_Christina_Aguilera_-_Moves_Like_Jagger.mp3\",\n        \"duration\": 160,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            2\n        ],\n        \"genres\": [\n            3,\n            5\n        ],\n        \"playlists\": [\n            4,\n            5\n        ]\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Metro Boomin\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/A66610AC-517F-4A5F-BF72-A35226B0957A.jpeg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/Metro_Boomin_Travis_Scott__Raindrops.mp3\",\n        \"duration\": 200,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            6\n        ],\n        \"genres\": [\n            4,\n            2,\n            1\n        ],\n        \"playlists\": [\n            2,\n            5,\n            3\n        ]\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Tvoya Nejnaya Poxodka\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/cover_3.jpg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/tvoyanejnayapoxodka.mp3\",\n        \"duration\": 150,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            4\n        ],\n        \"genres\": [\n            4,\n            1,\n            5\n        ],\n        \"playlists\": [\n            2,\n            4,\n            3\n        ]\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Phonk Remix\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/Beethoven.jpg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_BEETHOVEN_CLASSICAL_PHONK_REMIX_BY_MADEINNLINE.mp3\",\n        \"duration\": 160,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            1\n        ],\n        \"genres\": [\n            4,\n            5\n        ],\n        \"playlists\": [\n            2,\n            4,\n            5\n        ]\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Dem Olmusam\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/400x400cc.jpg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Dilara_Kaz%C4%B1mova__Dem_Olmu%C5%9Fam__Akustikhane_hissethezzal.mp3\",\n        \"duration\": 155,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            3\n        ],\n        \"genres\": [\n            3,\n            2,\n            1\n        ],\n        \"playlists\": [\n            2,\n            4,\n            3\n        ]\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Goose Bumps\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/ab67616d0000b273f54b99bf27cda88f4a7403ce.jpeg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Travis_Scott__goosebumps_ft_Kendrick_Lamar.mp3\",\n        \"duration\": 180,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            6\n        ],\n        \"genres\": [\n            3,\n            1,\n            5\n        ],\n        \"playlists\": [\n            1,\n            5,\n            3\n        ]\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Highest in the room\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/Travis_Scott_-_Highest_in_the_Room.png\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Travis_Scott__HIGHEST_IN_THE_ROOM_Official_Music_Video.mp3\",\n        \"duration\": 200,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            6\n        ],\n        \"genres\": [\n            2,\n            1,\n            5\n        ],\n        \"playlists\": [\n            1,\n            2,\n            4\n        ]\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Bazzy Fantazy\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/bazzi.webp\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/bazzi-fantasy-mp3.mp3\",\n        \"duration\": 180,\n        \"listen_count\": 0,\n        \"updated\": \"2023-04-02\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            2,\n            1\n        ],\n        \"genres\": [\n            4,\n            2\n        ],\n        \"playlists\": [\n            1,\n            2\n        ]\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "Song Detail",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token eb43456bc7a456f60f264bb68636388bcb4c81ae",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/songs/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"songs",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Song Detail",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/songs/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"songs",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:39:19 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "362"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"title\": \"Bazzy Fantazy\",\n    \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/bazzi.webp\",\n    \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/bazzi-fantasy-mp3.mp3\",\n    \"duration\": 180,\n    \"lyrics\": \"\",\n    \"listen_count\": 0,\n    \"updated\": \"2023-04-02\",\n    \"created\": \"2023-03-30\",\n    \"artists\": [\n        2,\n        1\n    ],\n    \"genres\": [\n        4,\n        2\n    ],\n    \"playlists\": [\n        1,\n        2\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Liked Songs",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/liked-songs/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"liked-songs",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Liked Songs",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/liked-songs/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"liked-songs",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:39:56 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "1554"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 5,\n        \"title\": \"Tvoya Nejnaya Poxodka\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/cover_3.jpg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/tvoyanejnayapoxodka.mp3\",\n        \"duration\": 150,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            4\n        ],\n        \"genres\": [\n            4,\n            1,\n            5\n        ],\n        \"playlists\": [\n            2,\n            4,\n            3\n        ]\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Dem Olmusam\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/400x400cc.jpg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Dilara_Kaz%C4%B1mova__Dem_Olmu%C5%9Fam__Akustikhane_hissethezzal.mp3\",\n        \"duration\": 155,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            3\n        ],\n        \"genres\": [\n            3,\n            2,\n            1\n        ],\n        \"playlists\": [\n            2,\n            4,\n            3\n        ]\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Goose Bumps\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/ab67616d0000b273f54b99bf27cda88f4a7403ce.jpeg\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Travis_Scott__goosebumps_ft_Kendrick_Lamar.mp3\",\n        \"duration\": 180,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            6\n        ],\n        \"genres\": [\n            3,\n            1,\n            5\n        ],\n        \"playlists\": [\n            1,\n            5,\n            3\n        ]\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Bazzy Fantazy\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/bazzi.webp\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/bazzi-fantasy-mp3.mp3\",\n        \"duration\": 180,\n        \"listen_count\": 0,\n        \"updated\": \"2023-04-02\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            2,\n            1\n        ],\n        \"genres\": [\n            4,\n            2\n        ],\n        \"playlists\": [\n            1,\n            2\n        ]\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "like song",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/like-song/5/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"like-song",
+										"5",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "like song",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/like-song/5/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"like-song",
+												"5",
+												""
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:40:25 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "unlike song",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/unlike-song/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"unlike-song",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "unlike song",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/unlike-song/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"unlike-song",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:40:47 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "POST, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Song Search",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/songs/?search=az",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"songs",
+										""
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "az"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Song Search",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/songs/?search=az",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"songs",
+												""
+											],
+											"query": [
+												{
+													"key": "search",
+													"value": "az"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:43:09 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "749"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 3,\n        \"title\": \"Jazzy\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/Maroon_5_Moves_Like_Jagger_cover.png\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/Maroon_5_Christina_Aguilera_-_Moves_Like_Jagger.mp3\",\n        \"duration\": 160,\n        \"listen_count\": 0,\n        \"updated\": \"2023-03-30\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            2\n        ],\n        \"genres\": [\n            3,\n            5\n        ],\n        \"playlists\": [\n            4,\n            5\n        ]\n    },\n    {\n        \"id\": 1,\n        \"title\": \"Bazzy Fantazy\",\n        \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/bazzi.webp\",\n        \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/bazzi-fantasy-mp3.mp3\",\n        \"duration\": 180,\n        \"listen_count\": 0,\n        \"updated\": \"2023-04-02\",\n        \"created\": \"2023-03-30\",\n        \"artists\": [\n            2,\n            1\n        ],\n        \"genres\": [\n            4,\n            2\n        ],\n        \"playlists\": [\n            1,\n            2\n        ]\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Genre",
+					"item": [
+						{
+							"name": "Genre List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/genres/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"genres",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Genre List",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/genres/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"genres",
+												""
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "html",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:43:20 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "text/html; charset=utf-8"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "7138"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">\n        <title>Page not found at /api/genre-list/</title>\n        <meta name=\"robots\" content=\"NONE,NOARCHIVE\">\n        <style type=\"text/css\">\n    html * { padding:0; margin:0; }\n    body * { padding:10px 20px; }\n    body * * { padding:0; }\n    body { font:small sans-serif; background:#eee; color:#000; }\n    body>div { border-bottom:1px solid #ddd; }\n    h1 { font-weight:normal; margin-bottom:.4em; }\n    h1 span { font-size:60%; color:#666; font-weight:normal; }\n    table { border:none; border-collapse: collapse; width:100%; }\n    td, th { vertical-align:top; padding:2px 3px; }\n    th { width:12em; text-align:right; color:#666; padding-right:.5em; }\n    #info { background:#f6f6f6; }\n    #info ol { margin: 0.5em 4em; }\n    #info ol li { font-family: monospace; }\n    #summary { background: #ffc; }\n    #explanation { background:#eee; border-bottom: 0px none; }\n    pre.exception_value { font-family: sans-serif; color: #575757; font-size: 1.5em; margin: 10px 0 10px 0; }\n  </style>\n    </head>\n    <body>\n        <div id=\"summary\">\n            <h1>Page not found \n                <span>(404)</span>\n            </h1>\n            <table class=\"meta\">\n                <tr>\n                    <th>Request Method:</th>\n                    <td>GET</td>\n                </tr>\n                <tr>\n                    <th>Request URL:</th>\n                    <td>http://127.0.0.1:8000/api/genre-list/</td>\n                </tr>\n            </table>\n        </div>\n        <div id=\"info\">\n            <p>\n      Using the URLconf defined in \n                <code>backend.urls</code>,\n      Django tried these URL patterns, in this order:\n            </p>\n            <ol>\n                <li>\n            \n                admin/\n                \n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                playlists/\n                [name='playlist-list']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                playlists/&lt;int:pk&gt;/\n                [name='playlist-detail']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                songs/\n                [name='song-list']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                songs/&lt;int:pk&gt;/\n                [name='song-detail']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                genres/\n                [name='genre-list']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                genres/&lt;int:pk&gt;/\n                [name='genre-detail']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                liked-playlists/\n                [name='liked-playlist-list']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                like-playlist/&lt;int:pk&gt;/\n                [name='like-playlist']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                unlike-playlist/&lt;int:pk&gt;/\n                [name='unlike-playlist']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                liked-songs/\n                [name='liked-song-list']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                like-song/&lt;int:pk&gt;/\n                [name='like-song']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                unlike-song/&lt;int:pk&gt;/\n                [name='unlike-song']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                artists/\n                [name='artist-list']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                artists/&lt;int:pk&gt;/\n                [name='artist-detail']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                following-artists/\n                [name='following-artist-list']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                follow-artist/&lt;int:pk&gt;/\n                [name='follow-artist']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                unfollow-artist/&lt;int:pk&gt;/\n                [name='unfollow-artist']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                register/\n                [name='register']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                login/\n                [name='login']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                customer-profile/\n                [name='customer-detail']\n            \n          </li>\n                <li>\n            \n                api/\n                \n            \n                \n                \n            \n                customer-image-upload/\n                [name='customer-image-upload']\n            \n          </li>\n            </ol>\n            <p>\n        \n          The current path, \n                <code>api/genre-list/</code>,\n        \n        didn’t match any of these.\n            </p>\n        </div>\n        <div id=\"explanation\">\n            <p>\n      You’re seeing this error because you have \n                <code>DEBUG = True</code> in\n      your Django settings file. Change that to\n                <code>False</code>, and Django\n      will display a standard 404 page.\n            </p>\n        </div>\n    </body>\n</html>"
+								}
+							]
+						},
+						{
+							"name": "Genre Detail",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/genres/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"genres",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Genre Detail",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/genres/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"genres",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 03 Apr 2023 16:43:38 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "2478"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"songs\": [\n        {\n            \"id\": 2,\n            \"title\": \"Zvezda\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/jony.jpeg\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/jony-zvezda-mp3.mp3\",\n            \"duration\": 200,\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                4\n            ],\n            \"genres\": [\n                4,\n                1\n            ],\n            \"playlists\": [\n                4,\n                5,\n                3\n            ]\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Metro Boomin\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/A66610AC-517F-4A5F-BF72-A35226B0957A.jpeg\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/Metro_Boomin_Travis_Scott__Raindrops.mp3\",\n            \"duration\": 200,\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                6\n            ],\n            \"genres\": [\n                4,\n                2,\n                1\n            ],\n            \"playlists\": [\n                2,\n                5,\n                3\n            ]\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Tvoya Nejnaya Poxodka\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/cover_3.jpg\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/tvoyanejnayapoxodka.mp3\",\n            \"duration\": 150,\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                4\n            ],\n            \"genres\": [\n                4,\n                1,\n                5\n            ],\n            \"playlists\": [\n                2,\n                4,\n                3\n            ]\n        },\n        {\n            \"id\": 7,\n            \"title\": \"Dem Olmusam\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/400x400cc.jpg\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Dilara_Kaz%C4%B1mova__Dem_Olmu%C5%9Fam__Akustikhane_hissethezzal.mp3\",\n            \"duration\": 155,\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                3\n            ],\n            \"genres\": [\n                3,\n                2,\n                1\n            ],\n            \"playlists\": [\n                2,\n                4,\n                3\n            ]\n        },\n        {\n            \"id\": 8,\n            \"title\": \"Goose Bumps\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/ab67616d0000b273f54b99bf27cda88f4a7403ce.jpeg\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Travis_Scott__goosebumps_ft_Kendrick_Lamar.mp3\",\n            \"duration\": 180,\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                6\n            ],\n            \"genres\": [\n                3,\n                1,\n                5\n            ],\n            \"playlists\": [\n                1,\n                5,\n                3\n            ]\n        },\n        {\n            \"id\": 9,\n            \"title\": \"Highest in the room\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/Travis_Scott_-_Highest_in_the_Room.png\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_Travis_Scott__HIGHEST_IN_THE_ROOM_Official_Music_Video.mp3\",\n            \"duration\": 200,\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                6\n            ],\n            \"genres\": [\n                2,\n                1,\n                5\n            ],\n            \"playlists\": [\n                1,\n                2,\n                4\n            ]\n        }\n    ],\n    \"title\": \"pop\",\n    \"color\": \"#62FF04\",\n    \"updated\": \"2023-03-31\",\n    \"created\": \"2023-03-30\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

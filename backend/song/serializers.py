@@ -18,8 +18,6 @@ class PlayListSerializer(serializers.ModelSerializer):
         model = Playlist
         fields = '__all__'
         
-
-        
         
 class SongSerializer(serializers.ModelSerializer):
     
@@ -32,7 +30,17 @@ class SongDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Song
         fields = '__all__'
-        
+
+class GenreSummarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = ['id', 'title', 'color']
+
+class GenreSerializer(serializers.ModelSerializer):
+    songs = SongSerializer(many=True)
+    class Meta:
+        model = Genre
+        fields = '__all__'
      
      
 class SongSerializerForPlaylistDetail(serializers.ModelSerializer):
@@ -46,7 +54,7 @@ class SongSerializerForPlaylistDetail(serializers.ModelSerializer):
     def get_liked(self, obj):
         user = self.context['request'].user
         if user.is_authenticated:
-            return user.customer.liked_songs.filter(id=obj.id).exists()
+            return user.customer.liked_songs.contains(obj)
         return False
         
 class PlayListDetailSerializer(serializers.ModelSerializer):
@@ -55,7 +63,9 @@ class PlayListDetailSerializer(serializers.ModelSerializer):
     liked = serializers.SerializerMethodField()
     
     def get_liked(self, obj):
-        return self.context['request'].user.customer.liked_playlists.filter(id=obj.id).exists()
+        user = self.context['request'].user
+        if user.is_authenticated:
+            return user.customer.liked_playlists.contains(obj)
     
     class Meta:
         model = Playlist

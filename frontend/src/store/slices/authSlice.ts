@@ -3,42 +3,29 @@ import type { PayloadAction } from '@reduxjs/toolkit'
 import { IRegisterParams, login, loginParams, register } from "../../api/authApi";
 import { Dispatch } from 'redux';
 import { setToast } from "./notificationSlice";
-import { removeTokenFromAxios, setTokenToAxios } from "../../api/iaxios";
+import { setTokenToAxios } from "../../api/iaxios";
+import { IAuthInfo } from "../../types";
 
-type nullOrString = string | null
-type nullOrNumber = number | null
-
-interface IAuthInfo<I, T> {
-    id: I,
-    first_name: T,
-    last_name: T,
-    username: T,
-    email: T,
-    birth_date: T,
-    gender: T,
-    token: T,
-    remember_me?: T
-}
 type authStatusType = 'notChecked' | 'loggedIn' | 'loggedOut'
-
 
 interface IState {
     authStatus: authStatusType,
-    authInfo: IAuthInfo<nullOrNumber, nullOrString>
+    authInfo: IAuthInfo
 }
 
 const intialState: IState = {
     authStatus: 'notChecked',
     authInfo: {
-        id: null,
-        first_name: null,
-        last_name: null,
-        username: null,
-        email: null,
-        birth_date: null,
-        gender: null,
-        token: null,
-        remember_me: null,
+        id: 0,
+        user_id: 0,
+        first_name: '',
+        last_name: '',
+        username: '',
+        email: '',
+        birth_date: '',
+        gender: '',
+        token: '',
+        remember_me: false,
     }
 }
 
@@ -46,7 +33,7 @@ export const authSlice = createSlice({
     name: 'auth',
     initialState: intialState,
     reducers: {
-        setAuthInfo: (state, action: PayloadAction<IAuthInfo<number, string>>) => {
+        setAuthInfo: (state, action: PayloadAction<IAuthInfo>) => {
             state.authInfo = action.payload
             state.authStatus = 'loggedIn'
 
@@ -66,7 +53,9 @@ export const { setAuthInfo, setAuthStatus, setLogout  } = authSlice.actions;
 
 export const logoutAction = () => (dispatch: Dispatch) => {
     dispatch(setLogout())
+    // remove user related data from local storage
     localStorage.removeItem('authInfo')
+    localStorage.removeItem('lastPlayingInfo')
 }
 
 export const checkAuthAction = () => (dispatch: Dispatch) => {
@@ -74,6 +63,7 @@ export const checkAuthAction = () => (dispatch: Dispatch) => {
     if (authInfo) {
         dispatch(setAuthInfo(authInfo))
         dispatch(setAuthStatus('loggedIn'))
+        // set token to axios instance
         setTokenToAxios(authInfo.token)
     } else {
         dispatch(setAuthStatus('loggedOut'))
@@ -99,7 +89,7 @@ export const registerAction = (data: IRegisterParams) => (dispatch: Dispatch) =>
         dispatch(setAuthInfo(response.data))
         dispatch(setToast({ open: true, type: 'success', message: 'Ugurla qeydiyyatdan kecdiniz!' }))
         dispatch(setAuthStatus('loggedIn'))
-        removeTokenFromAxios()
+        setTokenToAxios(response.data.token)
     }).catch(error => {
         const [errorType, [errorMessage]] = Object.entries(error.response.data)[0] as [string, [string]]
         dispatch(setToast({ open: true, type: 'error', message: `${errorType} - ${errorMessage}` }))

@@ -16,4 +16,5 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('login/', views.login_view, name='login'),
     path('customer-profile/', views.CustomerProfileDetailAV.as_view(), name='customer-detail'),
+    path('customer-image-upload/', views.CustomerProfileUploadAV.as_view(), name='customer-image-upload'),
 ]

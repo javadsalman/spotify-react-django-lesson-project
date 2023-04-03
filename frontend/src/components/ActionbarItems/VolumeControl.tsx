@@ -3,10 +3,10 @@ import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import Slider from '@mui/material/Slider/Slider';
 import { useAppDispatch, useAppSelector } from '../../store/reduxhooks';
 import { setVolume } from '../../store/slices/playerSlice';
-export interface ISongControlProps {
+export interface IVolumeControlProps {
 }
 
-export default function SongControl (props: ISongControlProps) {
+export default function VolumeControl (props: IVolumeControlProps) {
   const playerState = useAppSelector(state => state.player);
   const dispatch = useAppDispatch();
 
@@ -16,7 +16,7 @@ export default function SongControl (props: ISongControlProps) {
   return (
     <div className='flex items-center w-48 gap-5'>
       <VolumeUpIcon style={{color: 'white'}} />
-      <Slider value={playerState.audioVolume * 100} onChange={volumeChangeHandler} aria-label="Default" valueLabelDisplay="auto" size="small" />
+      <Slider value={playerState.audioVolume * 100} onChange={volumeChangeHandler} aria-label="Default" valueLabelDisplay="off" size="small" />
     </div>
   );
 }

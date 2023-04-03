@@ -4,6 +4,7 @@ from .models import GENDER_CHOICES, Customer, Artist
 from rest_framework.authtoken.models import Token
 from song.models import Song, Playlist
 
+
 class SongSerializerSummary(serializers.ModelSerializer):
     class Meta:
         model = Song
@@ -17,6 +18,7 @@ class PlaylistSerializerSummary(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
+    user_id = serializers.IntegerField(read_only=True)
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
     username = serializers.CharField(source='user.username')
@@ -24,7 +26,7 @@ class RegisterSerializer(serializers.Serializer):
     password = serializers.CharField(source='user.password', write_only=True)
     birth_date = serializers.DateField(input_formats=['%Y-%m-%d'])
     gender = serializers.ChoiceField(choices=GENDER_CHOICES)
-    token = serializers.SerializerMethodField()
+    token = serializers.SerializerMethodField(read_only=True)
     
     def create(self, validated_data):
         user_info: dict[str, str] = validated_data.pop('user')
@@ -46,11 +48,21 @@ class CustomerInfoSerializer(serializers.ModelSerializer):
     birth_date = serializers.DateField(input_formats=['%Y.%m.%d'])
     gender = serializers.ChoiceField(choices=GENDER_CHOICES)
     token = serializers.SerializerMethodField()
-    
     class Meta:
         model = Customer
-        fields = ['id', 'first_name', 'last_name', 'username', 'email', 'birth_date', 'gender', 'token']
-    
+        fields = [
+            'id', 
+            'first_name', 
+            'last_name', 
+            'username', 
+            'email', 
+            'birth_date', 
+            'gender', 
+            'token',
+            'user_id',
+        ]
+        read_only_fileds = ['id', 'user_id']
+        
     def get_token(self, customer):
         token, created = Token.objects.get_or_create(user=customer.user)
         return token.key
@@ -74,6 +86,7 @@ class ArtistDetailSerializer(serializers.ModelSerializer):
 class CustomerProfileSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
+    image = serializers.ImageField()
     username = serializers.CharField(source='user.username')
     email = serializers.EmailField(source='user.email')
     birth_date = serializers.DateField(input_formats=['%Y.%m.%d'])
@@ -82,4 +95,22 @@ class CustomerProfileSerializer(serializers.ModelSerializer):
     followed_artists = ArtistSerializer(many=True)
     class Meta:
         model = Customer
-        fields = ['first_name', 'last_name', 'email', 'username', 'birth_date', 'gender', 'playlists', 'followed_artists']
+        fields = [
+            'first_name',
+            'last_name',
+            'email',
+            'username',
+            'birth_date',
+            'gender',
+            'playlists',
+            'followed_artists',
+            'image',
+            'liked_songs',
+            'liked_playlists',
+            'followed_artists',
+            'user_id'
+        ]
+        
+        read_only_fields = ['user_id']
+        
+            

@@ -1,19 +1,14 @@
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
 import PlayButton from '../../components/UI/PlayButton';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { IconButton } from '@mui/material';
 import LikeButton from '../../components/UI/LikeButton';
-import SongItem from '../../components/Song/SongItem';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { IPlaylistDetail, ISong, SongsType } from '../../types';
-import SongLIst from '../../components/Song/SongLIst';
-import { useAppDispatch, useAppSelector } from '../../store/reduxhooks';
-import { changePlaylistAndSongAction, setPlaylistLiked } from '../../store/slices/playlistSlice';
+import SongLIst from '../../components/Song/SongList';
+import { useAppDispatch } from '../../store/reduxhooks';
+import { changePlaylistAndSongAction } from '../../store/slices/playlistSlice';
 import { likePlaylist, unlikePlaylist } from '../../api/songApi';
 
 export interface IPlaylistProps {
-    image: string,
+    image?: string,
     playlistType: "Playlist" | "Artist",
     title: string,
     artists: string,
@@ -25,26 +20,30 @@ export interface IPlaylistProps {
 }
 
 export default function Playlist(props: IPlaylistProps) {
+    const [liked, setLiked] = React.useState<boolean>(props.playlist.liked!);
 
     const dispatch = useAppDispatch();
 
-    const playlistState = useAppSelector(state => state.playlist);
     
     const playSongHandler = React.useCallback((song: ISong) => {
         dispatch(changePlaylistAndSongAction({song: song, playlist: props.playlist}))
     }, [dispatch, props.playlist])
 
+
+    // like playlist if not liked, unlike if liked
     const likePlaylistHandler = React.useCallback((e?: React.MouseEvent) => {
-        if (playlistState.playlist.liked) {
+        if (liked) {
             unlikePlaylist(props.playlist.id).then(response => {
-                dispatch(setPlaylistLiked(false))
+                console.log('unliked', response.data)
+                setLiked(false)
             })
         } else {
             likePlaylist(props.playlist.id).then(response => {
-                dispatch(setPlaylistLiked(true))
+                console.log('liked', response.data)
+                setLiked(true)
             })
         }
-    }, [props.playlist.id, dispatch, playlistState.playlist.liked])
+    }, [liked, props.playlist.id])
 
 
     return (
@@ -63,7 +62,7 @@ export default function Playlist(props: IPlaylistProps) {
             <div className='mt-10'>
                 <div className='flex align-baseline gap-5'>
                     <PlayButton onClick={props.playPlaylist} />
-                    {props.hasLikeButton && <LikeButton styles={{fontSize: 50, color: 'white'}} onClick={likePlaylistHandler} liked={playlistState.playlist.liked}/>}
+                    {props.hasLikeButton && <LikeButton styles={{fontSize: 50, color: 'white'}} onClick={likePlaylistHandler} liked={liked}/>}
                 </div>
                 <div>
                     <SongLIst songs={props.songs} onChangeSong={playSongHandler} />

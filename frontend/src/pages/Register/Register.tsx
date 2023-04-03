@@ -4,7 +4,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { useAppDispatch, useAppSelector } from '../../store/reduxhooks';
+import { useAppDispatch } from '../../store/reduxhooks';
 import { registerAction } from '../../store/slices/authSlice';
 
 const darkTheme = createTheme({
@@ -25,34 +25,34 @@ export default function Register(props: IRegisterProps) {
    const [birth_date, setBirthDate] = React.useState<Date | null>(null);
    const [gender, setGender] = React.useState<string>('');
 
-   const {authInfo} = useAppSelector(state => state.auth)
 
    const dispatch = useAppDispatch()
 
    const submitHandler = React.useCallback(() => {
+      // get the date in the format that the backend expects
       const birth_date_string = birth_date ? birth_date!.toISOString().split('T')[0] : ''
       dispatch(registerAction({email, username, password, first_name, last_name, birth_date: birth_date_string, gender}))
    }, [email, username, password, first_name, last_name, birth_date, gender, dispatch])
 
    return (
       <ThemeProvider theme={darkTheme}>
-         <div className='flex pt-20 justify-center'>
+         <div className='flex pt-6 justify-center'>
             <div className='basis-9/12'>
                <div className='text-4xl text-white font-bold mb-10 text-center'>Sign up for free to start listening.</div>
-               <div className='mt-5'>
-                  <TextField value={email} onChange={e => setEmail(e.target.value)} label="Email?" type="email" fullWidth variant="filled" id="outlined-basic" />
-               </div>
-               <div className='mt-5'>
-                  <TextField value={username} onChange={e => setUsername(e.target.value)} label="Username?" fullWidth variant="filled" id="outlined-basic" />
-               </div>
-               <div className='mt-5'>
-                  <TextField value={password} onChange={e => setPassword(e.target.value)} label="Password?" type="password" fullWidth variant="filled" id="outlined-basic" />
-               </div>
                <div className='mt-5'>
                   <TextField value={first_name} onChange={e => setFirstName(e.target.value)} label="First Name?" fullWidth variant="filled" id="outlined-basic" />
                </div>
                <div className='mt-5'>
                   <TextField value={last_name} onChange={e => setLastName(e.target.value)} label="Last Name?" fullWidth variant="filled" id="outlined-basic" />
+               </div>
+               <div className='mt-5'>
+                  <TextField value={username} onChange={e => setUsername(e.target.value)} label="Username?" fullWidth variant="filled" id="outlined-basic" />
+               </div>
+               <div className='mt-5'>
+                  <TextField value={email} onChange={e => setEmail(e.target.value)} label="Email?" type="email" fullWidth variant="filled" id="outlined-basic" />
+               </div>
+               <div className='mt-5'>
+                  <TextField value={password} onChange={e => setPassword(e.target.value)} label="Password?" type="password" fullWidth variant="filled" id="outlined-basic" />
                </div>
                <div className='mt-5 flex items-center gap-10'>
                   <div className='text-white text-2xl'>Your birth date</div>

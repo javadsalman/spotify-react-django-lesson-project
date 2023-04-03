@@ -1,23 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Layout from './HOC/Layout';
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Home from './containers/Home/Home';
-import Playlist from './containers/Playlist/Playlist';
-import Search from './containers/Search/Search';
-import Register from './containers/Register/Register';
-import Login from './containers/Login/Login';
+import Home from './pages/Home/Home';
+import Search from './pages/Search/Search';
+import Register from './pages/Register/Register';
+import Login from './pages/Login/Login';
 import Profile from './containers/Profile/Profile';
 import { useAppDispatch, useAppSelector } from './store/reduxhooks';
 import { checkAuthAction } from './store/slices/authSlice';
-import PlaylistPage from './containers/PlaylistPage/PlaylistPage';
+import PlaylistPage from './pages/PlaylistPage/PlaylistPage';
 import { loadStoredPlaylist } from './store/slices/playlistSlice';
+import LikedSongsPage from './pages/LikedSongsPage/LikedSongsPage';
+import GenrePage from './pages/GenrePage/GenrePage';
 
 function App() {
-  const {authStatus, authInfo} = useAppSelector(state => state.auth)
+  const {authStatus} = useAppSelector(state => state.auth)
   const dispatch = useAppDispatch()
 
+  // Checking autthenication status and loading stored playlist
   React.useEffect(() => {
     dispatch(checkAuthAction())
     dispatch(loadStoredPlaylist())
@@ -29,8 +30,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/playlists/:id/' element={<PlaylistPage />} />
-          <Route path='/search/*' element={<Search />} />
+          <Route path='/search/' element={<Search />} />
+          <Route path='/search/:query/' element={<Search />} />
+          <Route path='/genres/:genreId/' element={<GenrePage />} />
           <Route path='/profile/' element={<Profile />} />
+          <Route path='/liked-songs/' element={<LikedSongsPage />} />
           <Route path='/*' element={<Navigate to="/" />} />
         </Routes>
       )

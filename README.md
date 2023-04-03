@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# 🎧 Spotify Clone with Django and React
+## ⚙ Used Technologies:
+- Django Rest Framework
+- React
+- Typescript
+- TailwindCSS
+- Redux Toolkit
+- Material UI
+- Docker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🛠 How to setup?
+The easiest way to setup this project is using Docker. 
 
-## Available Scripts
+If you don't have Docker you can install it from [this link](https://www.docker.com/products/docker-desktop/).
 
-In the project directory, you can run:
+After downloading Docker open terminal and go to directory of docker-compose.yml. 
 
-### `npm start`
+After all just write `docker compose up` command. You will have to wait to build images and start the app for a while. When it ends you can open site from [http://localhost:3000](http://localhost:3000) address.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Also you can access to admin panel via this link: [http://localhost:8000/admin/](http://localhost:8000/admin/).
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📷 Screenshots
+![home](./screenshots/home.PNG)
 
-### `npm test`
+![playlist](./screenshots/playlist_page.PNG)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![profile](./screenshots/profile.PNG)
 
-### `npm run build`
+![searching](./screenshots/searching.PNG)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![search](./screenshots/search.PNG)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![login](./screenshots/login.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![register](./screenshots/register.PNG)
 
-### `npm run eject`
+![admin_panel](./screenshots/admin_panel.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![admin_panel_customer](./screenshots/admin_panel_customer.PNG)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![admin_panel_genre](./screenshots/admin_panel_genre.PNG)

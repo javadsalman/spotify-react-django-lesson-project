@@ -90,11 +90,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': getenv('DB_NAME'),
-        'USER': getenv('DB_USER'),
-        'PASSWORD': getenv('DB_PASSWORD'),
-        'HOST': getenv('DB_HOST'),
-        'PORT': getenv('DB_PORT'),
+        'NAME': getenv('POSTGRES_DB'),
+        'USER': getenv('POSTGRES_USER'),
+        'PASSWORD': getenv('POSTGRES_PASSWORD'),
+        'HOST': getenv('POSTGRES_HOST'),
+        'PORT': getenv('POSTGRES_PORT'),
     }
 }
 
@@ -151,13 +151,15 @@ REST_FRAMEWORK = {
     }
 }
 
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_S3_ACCESS_KEY_ID = getenv('AWS_S3_ACCESS_KEY_ID')
-AWS_S3_SECRET_ACCESS_KEY = getenv('AWS_S3_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = getenv('AWS_STORAGE_BUCKET_NAME')
-AWS_S3_REGION_NAME = getenv('AWS_S3_REGION_NAME')
-AWS_DEFAULT_ACL = getenv('AWS_DEFAULT_ACL')
-AWS_QUERYSTRING_AUTH = getenv('AWS_QUERYSTRING_AUTH') == 'True'
-
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+if getenv('STORAGE') == 'AWS_S3':
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    AWS_S3_ACCESS_KEY_ID = getenv('AWS_S3_ACCESS_KEY_ID')
+    AWS_S3_SECRET_ACCESS_KEY = getenv('AWS_S3_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = getenv('AWS_S3_REGION_NAME')
+    AWS_DEFAULT_ACL = getenv('AWS_DEFAULT_ACL')
+    AWS_QUERYSTRING_AUTH = getenv('AWS_QUERYSTRING_AUTH') == 'True'
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com'
+else:
+    MEDIA_URL = 'media/'
+    MEDIA_ROOT = BASE_DIR / 'media'

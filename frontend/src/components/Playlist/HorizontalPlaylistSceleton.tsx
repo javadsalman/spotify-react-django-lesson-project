@@ -1,12 +1,6 @@
-import * as React from 'react';
-import PlayButton from '../UI/PlayButton';
 import Skeleton from '@mui/material/Skeleton';
 
-{/* <Skeleton variant="circular" width={40} height={40} />
-<Skeleton variant="rectangular" width={210} height={60} />
-<Skeleton variant="rounded" width={210} height={60} /> */}
-
-
+// This component is used to show a skeleton when the data is loading
 
 export interface IHorizontalPlaylistSceletonProps {
 }

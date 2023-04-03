@@ -1,13 +1,14 @@
 import {
    createAsyncThunk,
    createSlice,
-   Dispatch,
    PayloadAction,
 } from "@reduxjs/toolkit";
-import { likeSong, unlikeSong } from "../../api/songApi";
+import { getPlaylistDetail, likeSong, unlikeSong } from "../../api/songApi";
 import { IPlaylistDetail, ISong } from "../../types";
 import { RootState } from "../store";
-import { setNewAudio, setPlayerSongLike } from "./playerSlice";
+import { setNewAudio, setPlayerSongLikedStatus } from "./playerSlice";
+
+// The currently playing playlist maganing from here
 
 interface IInitialState {
    currentSongId: number;
@@ -92,12 +93,24 @@ export const {
 
 export default playlistSlice.reducer;
 
-
+// Set playlist state to local storage
+interface lastPlayingInfoType {
+   lastSongId: number;
+   lastSongIndex: number;
+   lastPlaylistId: number;
+}
 const setStateToLocalStoreage = async (state: RootState) => {
    const playlistState = state.playlist;
-   localStorage.setItem("playlist", JSON.stringify(playlistState));
+   const lastSongId = playlistState.currentSongId;
+   const lastSongIndex = playlistState.currentSongIndex;
+   const lastPlaylistId = playlistState.playlist.id;
+   const lastPlayingInfo: lastPlayingInfoType = {
+      lastSongId, lastSongIndex, lastPlaylistId
+   }
+   localStorage.setItem("lastPlayingInfo", JSON.stringify(lastPlayingInfo));
 };
 
+// Set playlist and play first song
 export const setPlaylistAction = createAsyncThunk<void, {playlist: IPlaylistDetail, setFirstSong?: boolean}>(
    "setPlaylistAction",
    async ({playlist, setFirstSong=true}, {dispatch, getState}) => {
@@ -111,6 +124,7 @@ export const setPlaylistAction = createAsyncThunk<void, {playlist: IPlaylistDeta
    }
 );
 
+// Select song from playlist come before current song
 export const selectBeforeSong = createAsyncThunk(
    "selectBeforeSong",
    async (payload, { getState, dispatch }) => {
@@ -126,6 +140,7 @@ export const selectBeforeSong = createAsyncThunk(
    }
 );
 
+// Select song from playlist come after current song
 export const selectNextSong = createAsyncThunk(
    "selectNextSong",
    async (payload, { getState, dispatch }) => {
@@ -141,6 +156,7 @@ export const selectNextSong = createAsyncThunk(
    }
 );
 
+// Select song from current or other playlist
 export const changePlaylistAndSongAction = createAsyncThunk<void, {playlist:IPlaylistDetail, song: ISong}>(
    "changeSongAction",
    async ({playlist, song}, { dispatch, getState }) => {
@@ -153,22 +169,27 @@ export const changePlaylistAndSongAction = createAsyncThunk<void, {playlist:IPla
    }
 )
 
+// Select last played playlist and song from local storage
 export const loadStoredPlaylist = createAsyncThunk(
    "loadStoredPlaylist",
    async (payload, { dispatch, getState }) => {
-      const playlist = JSON.parse(localStorage.getItem("playlist") || "{}");
-      if (playlist.playlist) {
-         dispatch(setPlaylist(playlist.playlist));
-         const storagedSong = playlist.playlist.songs[playlist.currentSongIndex]
+      const lastPlayingInfo = JSON.parse(localStorage.getItem("lastPlayingInfo") || "{}") as lastPlayingInfoType;
+      const response = await getPlaylistDetail(lastPlayingInfo.lastPlaylistId);
+      const playlist = response.data;
+      if (lastPlayingInfo && playlist) {
+         dispatch(setPlaylist(playlist));
+         const storagedSong = playlist.songs[lastPlayingInfo.lastSongIndex]
          dispatch(setSelectSong(storagedSong));
          dispatch(setNewAudio({song: storagedSong, play: false})); 
       }
    }
 );
 
+// Like or unlike song
 export const toggleLikeSongAction = createAsyncThunk(
    "likeSongAction",
    async (songId: number, { dispatch, getState }) => {
+      
       const state = getState() as RootState;
       const playlistState = state.playlist;
       const song = playlistState.playlist.songs.find(
@@ -177,12 +198,12 @@ export const toggleLikeSongAction = createAsyncThunk(
       if (song.liked) {
          unlikeSong(songId).then((response) => {
             dispatch(setPlaylistSongLike({ id: songId, liked: false }));
-            dispatch(setPlayerSongLike(false))
+            dispatch(setPlayerSongLikedStatus(false))
          });
       } else {
         likeSong(songId).then((response) => {
             dispatch(setPlaylistSongLike({ id: songId, liked: true }));
-            dispatch(setPlayerSongLike(true))
+            dispatch(setPlayerSongLikedStatus(true))
          });
       }
    }

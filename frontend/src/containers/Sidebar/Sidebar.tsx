@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from '../../store/reduxhooks';
 
 export interface ISidebarProps {
 }
@@ -17,39 +18,39 @@ export default function Sidebar(props: ISidebarProps) {
                 <img src={spotifyLogo} alt="Sptoify Logo" width={150} />
             </div>
             <List className='text-white'>
-                <ListItem disablePadding>
-                    <NavLink to="/">
+                <NavLink to="/">
+                    <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
                                 <HomeIcon className='text-white' />
                             </ListItemIcon>
                             <ListItemText primary="Home" />
                         </ListItemButton>
-                    </NavLink>
-                </ListItem>
-                <ListItem disablePadding>
-                    <NavLink to="/search">
+                    </ListItem>
+                </NavLink>
+                <NavLink to="/search">
+                    <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
                                 <SearchIcon className='text-white' />
                             </ListItemIcon>
                             <ListItemText primary="Search" />
                         </ListItemButton>
-                    </NavLink>
-                </ListItem>
+                    </ListItem>
+                </NavLink>
             </List>
 
             <List className='text-white'>
-                <ListItem disablePadding>
-                    <NavLink to="/liked-songs">
+                <NavLink to="/liked-songs">
+                    <ListItem disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
                                 <FavoriteRoundedIcon className='text-white' />
                             </ListItemIcon>
                             <ListItemText primary="Liked Songs" />
                         </ListItemButton>
-                    </NavLink>
-                </ListItem>
+                    </ListItem>
+                </NavLink>
                 <Divider className='bg-white' />
             </List>
         </div>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import LikeButton from '../UI/LikeButton';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PlayButton from '../UI/PlayButton';
 import { ISong } from '../../types';
-import { useAppDispatch, useAppSelector } from '../../store/reduxhooks';
+import { useAppSelector } from '../../store/reduxhooks';
 import classNames from 'classnames';
+import { likeSong, unlikeSong } from '../../api/songApi';
 
 export interface ISongItemProps {
     index: number,
@@ -13,21 +13,38 @@ export interface ISongItemProps {
 }
 
 export default function SongItem(props: ISongItemProps) {
+    const [liked, setLiked] = React.useState<boolean>(props.song.liked);
 
     const playerState = useAppSelector(state => state.player)
-    const dispatch = useAppDispatch();
 
+    // Determine if the song is currently playing to choose the correct icon between play and pause.
     const currentlyPlaying = React.useMemo(() => {
-        return playerState.songId === props.song.id
-    }, [playerState.songId, props.song.id])
+        return playerState.songId === props.song.id && playerState.audioIsPlaying
+    }, [playerState.songId, props.song.id, playerState.audioIsPlaying])
 
+    // calculate the duration of the song in minutes and seconds.
     const duration = React.useMemo(() => {
         const duration = props.song.duration;
         const minutes = Math.floor(duration / 60);
         const seconds = duration % 60;
         return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     }, [props.song.duration])
-    
+
+    // like or unlike a song.
+    const likeSongHandler = React.useCallback(() => {
+        if (props.song.liked) {
+            unlikeSong(props.song.id)
+            .then(() => {
+                setLiked(false)
+            })
+        } else {
+            likeSong(props.song.id)
+            .then(() => {
+                setLiked(true)
+            })
+        }
+    }, [props.song.liked, props.song.id, setLiked])
+
     return (
         <div 
             className={classNames(
@@ -44,7 +61,7 @@ export default function SongItem(props: ISongItemProps) {
                 </div>
             </div>
             <div className='col-span-3'>{props.song.genres.join(', ')}</div>
-            <div className='col-span-1'><LikeButton styles={{color: 'white'}} /></div>
+            <div className='col-span-1'><LikeButton liked={liked} styles={{color: 'white'}} onClick={likeSongHandler} /></div>
             <div className='col-span-1'>{duration}</div>
             <div className='col-span-1'><PlayButton color='text-white' onClick={props.onPlay} isPlaying={currentlyPlaying} /></div>
         </div>
