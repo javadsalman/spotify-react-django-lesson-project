@@ -1,4 +1,5 @@
 # 🎧 Spotify Clone with Django and React
+![home](./screenshots/home.PNG)
 ## ⚙ Used Technologies:
 - Django Rest Framework
 - React
