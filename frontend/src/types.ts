@@ -6,6 +6,12 @@ export interface IAuthorSummary {
     "image": string
 }
 
+export interface IArtistSummary {
+    "id": number,
+    "first_name": string,
+    "last_name": string,
+}
+
 export interface IPlaylist {
         "id": number,
         "author": IAuthorSummary,
@@ -23,7 +29,7 @@ export type PlaylistsType = IPlaylist[]
 
 export interface ISong {
     "id": number,
-    "artists": string[],
+    "artists": IArtistSummary[],
     "genres": string[],
     "title": string,
     "image": string,
@@ -103,4 +109,15 @@ export interface IGenreDetail {
     "songs": SongsType
     "created": string,
     "updated": string,
+}
+
+export interface IArtistDetail {
+    "id": number,
+    "first_name": string,
+    "last_name": string,
+    "image": string,
+    "cover": string,
+    "verified": boolean,
+    "songs": SongsType,
+    "is_following": boolean,
 }

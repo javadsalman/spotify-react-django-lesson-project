@@ -20,6 +20,9 @@ After all just write `docker compose up` command. You will have to wait to build
 
 Also you can access to admin panel via this link: [http://localhost:8000/admin/](http://localhost:8000/admin/). Username and password is just `admin`.
 
+## 📖 Documentation
+All of the necessary algorithms have comment. On the other hand, there is Postman documentation available to follow necessary URLs and Responses. To access it, open the Postman application and import the `Spotify.postman_collection.json` file.
+
 ## 📷 Screenshots
 ### Home
 ![home](./screenshots/home.PNG)

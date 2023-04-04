@@ -2,9 +2,11 @@ import * as React from 'react';
 import LikeButton from '../UI/LikeButton';
 import PlayButton from '../UI/PlayButton';
 import { ISong } from '../../types';
-import { useAppSelector } from '../../store/reduxhooks';
+import { useAppDispatch, useAppSelector } from '../../store/reduxhooks';
 import classNames from 'classnames';
 import { likeSong, unlikeSong } from '../../api/songApi';
+import { Link } from 'react-router-dom';
+import { setPlayerSongLikedStatus, toggleAudioIsPlaying } from '../../store/slices/playerSlice';
 
 export interface ISongItemProps {
     index: number,
@@ -14,13 +16,11 @@ export interface ISongItemProps {
 
 export default function SongItem(props: ISongItemProps) {
     const [liked, setLiked] = React.useState<boolean>(props.song.liked);
+    const [currentlyPlaying, setCurrentlyPlaying] = React.useState<boolean>(false);
 
+    const dispatch = useAppDispatch();
     const playerState = useAppSelector(state => state.player)
-
-    // Determine if the song is currently playing to choose the correct icon between play and pause.
-    const currentlyPlaying = React.useMemo(() => {
-        return playerState.songId === props.song.id && playerState.audioIsPlaying
-    }, [playerState.songId, props.song.id, playerState.audioIsPlaying])
+    const isThisSongPlaying = playerState.songId === props.song.id
 
     // calculate the duration of the song in minutes and seconds.
     const duration = React.useMemo(() => {
@@ -30,20 +30,42 @@ export default function SongItem(props: ISongItemProps) {
         return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
     }, [props.song.duration])
 
+
     // like or unlike a song.
     const likeSongHandler = React.useCallback(() => {
-        if (props.song.liked) {
+        if (liked) {
             unlikeSong(props.song.id)
             .then(() => {
                 setLiked(false)
+                if (isThisSongPlaying)
+                    dispatch(setPlayerSongLikedStatus(false))
             })
         } else {
             likeSong(props.song.id)
             .then(() => {
                 setLiked(true)
+                if (isThisSongPlaying)
+                    dispatch(setPlayerSongLikedStatus(true))
             })
         }
-    }, [props.song.liked, props.song.id, setLiked])
+    }, [props.song.id, dispatch, isThisSongPlaying, liked])
+
+    // play or pause a song if this song is playing.
+    const playSongHandler = React.useCallback(() => {
+        if (isThisSongPlaying) {
+            dispatch(toggleAudioIsPlaying(null))
+        } else {
+            props.onPlay()
+        }
+    }, [ isThisSongPlaying, props, dispatch])
+
+    // update the like and play status of the song if they changed by action bar.
+    React.useEffect(() => {
+        if (isThisSongPlaying) {
+            setLiked(playerState.songLiked)
+            setCurrentlyPlaying(playerState.audioIsPlaying)
+        }
+    }, [ playerState.songLiked, playerState.audioIsPlaying, isThisSongPlaying])
 
     return (
         <div 
@@ -57,13 +79,21 @@ export default function SongItem(props: ISongItemProps) {
                 <img className='w-14 h-14' src={props.song.image} alt="" />
                 <div>
                     <div className='text-lg font-bold'>{props.song.title}</div>
-                    <div className='text-sm'>{props.song.artists.join(', ')}</div>
+                    <div className='text-sm'>
+                        {props.song.artists && props.song.artists.map((artist) => {
+                            return (
+                                <Link to={`/artists/${artist.id}`} key={artist.id}>
+                                    <span className='text-sm hover:underline'>{artist.first_name} {artist.last_name}</span>
+                                </Link>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
             <div className='col-span-3'>{props.song.genres.join(', ')}</div>
             <div className='col-span-1'><LikeButton liked={liked} styles={{color: 'white'}} onClick={likeSongHandler} /></div>
             <div className='col-span-1'>{duration}</div>
-            <div className='col-span-1'><PlayButton color='text-white' onClick={props.onPlay} isPlaying={currentlyPlaying} /></div>
+            <div className='col-span-1'><PlayButton color='text-white' onClick={playSongHandler} isPlaying={currentlyPlaying} /></div>
         </div>
     );
 }

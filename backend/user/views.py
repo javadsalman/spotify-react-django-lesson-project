@@ -20,7 +20,7 @@ from .serializers import (
     CustomerProfileSerializer
 )
 from song.serializers import (
-    PlayListSerializer, SongSerializer
+    PlayListSerializer, SongSerializerForPlaylistDetail
 )
 from song.models import (
     Playlist, Song
@@ -52,17 +52,22 @@ class LikedPlaylistListAV(ListAPIView):
 class LikedSongListAV(ListAPIView):
     def get_queryset(self):
         return self.request.user.customer.liked_songs.all()
-    serializer_class = SongSerializer
+    serializer_class = SongSerializerForPlaylistDetail
     permission_classes = [IsAuthenticated]
     
 class ArtistListAV(ListAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistSerializer
     permission_classes = [IsAuthenticated]
+
+    
 class ArtistDetailAV(RetrieveUpdateDestroyAPIView):
     queryset = Artist.objects.all()
     serializer_class = ArtistDetailSerializer
     permission_classes = [IsAuthenticated]
+    
+    def get_serializer_context(self):
+        return {'request': self.request}
 class FollowingArtistListAV(ListAPIView):
     def get_queryset(self):
         return self.request.user.customer.followed_artists.all()
@@ -79,7 +84,7 @@ def follow_artist(request, pk):
 @permission_classes([IsAuthenticated])
 def unfollow_artist(request, pk):
     artist = get_object_or_404(Artist, pk=pk)
-    request.user.customer.followed_artists.add(artist)
+    request.user.customer.followed_artists.remove(artist)
     return Response(status=status.HTTP_202_ACCEPTED)
 
 @api_view(['POST'])

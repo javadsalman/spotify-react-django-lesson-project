@@ -2,8 +2,14 @@ from rest_framework import serializers
 from .models import (
     Playlist, Song, Genre
 )
-from user.models import Customer
+from user.models import Customer, Artist
 
+class ArtistSummarySerializer(serializers.ModelSerializer):
+    first_name = serializers.CharField(source='user.first_name')
+    last_name = serializers.CharField(source='user.last_name')
+    class Meta:
+        model = Artist
+        fields = ['id', 'first_name', 'last_name']
 class CustomerSummarySerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
@@ -20,7 +26,6 @@ class PlayListSerializer(serializers.ModelSerializer):
         
         
 class SongSerializer(serializers.ModelSerializer):
-    
     class Meta:
         model = Song
         exclude = ['lyrics']
@@ -44,7 +49,7 @@ class GenreSerializer(serializers.ModelSerializer):
      
      
 class SongSerializerForPlaylistDetail(serializers.ModelSerializer):
-    artists = serializers.StringRelatedField(many=True)
+    artists = ArtistSummarySerializer(many=True)
     genres = serializers.StringRelatedField(many=True)
     liked = serializers.SerializerMethodField()
     class Meta:

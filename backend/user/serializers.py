@@ -3,13 +3,9 @@ from django.contrib.auth.models import User
 from .models import GENDER_CHOICES, Customer, Artist
 from rest_framework.authtoken.models import Token
 from song.models import Song, Playlist
+from song.serializers import SongSerializerForPlaylistDetail
 
 
-class SongSerializerSummary(serializers.ModelSerializer):
-    class Meta:
-        model = Song
-        fields = '__all__'
-        
 class PlaylistSerializerSummary(serializers.ModelSerializer):
     class Meta:
         model = Playlist
@@ -67,22 +63,30 @@ class CustomerInfoSerializer(serializers.ModelSerializer):
         token, created = Token.objects.get_or_create(user=customer.user)
         return token.key
     
+
+    
 class ArtistSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
     class Meta:
         model = Artist
         fields = ['id', 'first_name', 'last_name', 'image', 'cover', 'verified']
-
+        
 
 class ArtistDetailSerializer(serializers.ModelSerializer):
-    songs = SongSerializerSummary(many=True)
+    songs = SongSerializerForPlaylistDetail(many=True)
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')
+    is_following = serializers.SerializerMethodField()
     class Meta:
         model = Artist
-        fields = ['id', 'first_name', 'last_name', 'image', 'cover', 'verified', 'songs']
+        fields = ['id', 'first_name', 'last_name', 'image', 'cover', 'verified', 'songs', 'is_following']
         
+    def get_is_following(self, artist):
+        user = self.context['request'].user
+        return user.is_authenticated and user.customer.followed_artists.contains(artist)
+
+
 class CustomerProfileSerializer(serializers.ModelSerializer):
     first_name = serializers.CharField(source='user.first_name')
     last_name = serializers.CharField(source='user.last_name')

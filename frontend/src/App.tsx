@@ -13,6 +13,7 @@ import PlaylistPage from './pages/PlaylistPage/PlaylistPage';
 import { loadStoredPlaylist } from './store/slices/playlistSlice';
 import LikedSongsPage from './pages/LikedSongsPage/LikedSongsPage';
 import GenrePage from './pages/GenrePage/GenrePage';
+import ArtistPage from './pages/ArtistPage/ArtistPage';
 
 function App() {
   const {authStatus} = useAppSelector(state => state.auth)
@@ -21,8 +22,13 @@ function App() {
   // Checking autthenication status and loading stored playlist
   React.useEffect(() => {
     dispatch(checkAuthAction())
-    dispatch(loadStoredPlaylist())
   }, [dispatch])
+  
+  React.useEffect(() => {
+    // load playlist from local storage if user is logged in.
+    if (authStatus === 'loggedIn')
+      dispatch(loadStoredPlaylist())
+  }, [authStatus, dispatch])
 
   const routes = React.useMemo(() => {
     if (authStatus === 'loggedIn') {
@@ -34,6 +40,7 @@ function App() {
           <Route path='/search/:query/' element={<Search />} />
           <Route path='/genres/:genreId/' element={<GenrePage />} />
           <Route path='/profile/' element={<Profile />} />
+          <Route path='/artists/:artistId' element={<ArtistPage />} />
           <Route path='/liked-songs/' element={<LikedSongsPage />} />
           <Route path='/*' element={<Navigate to="/" />} />
         </Routes>

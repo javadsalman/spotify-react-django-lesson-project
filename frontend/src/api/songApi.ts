@@ -1,4 +1,4 @@
-import { GenreSummriesType, IPlaylistDetail, PlaylistsType, SongsType } from "../types"
+import { GenreSummriesType, IArtistDetail, IGenreDetail, IPlaylistDetail, PlaylistsType, SongsType } from "../types"
 import iaxios from "./iaxios"
 
 
@@ -39,7 +39,7 @@ export const getGenreList = () => {
 }
 
 export const getGenreDetail = (id: string) => {
-    return iaxios.get(`/genres/${id}/`)
+    return iaxios.get<IGenreDetail>(`/genres/${id}/`)
 }
 
 export const searchSongs = (query: string) => {
@@ -48,4 +48,8 @@ export const searchSongs = (query: string) => {
 
 export const searchPlaylists = (query: string) => {
     return iaxios.get<PlaylistsType>(`/playlists/?search=${query}`)
+}
+
+export const getArtistDetail = (id: string) => {
+    return iaxios.get<IArtistDetail>(`/artists/${id}/`)
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPlaylistDetail, SongsType } from '../../types';
 import { getLikedSongs } from '../../api/songApi';
 import { useAppDispatch } from '../../store/reduxhooks';
-import like from '../../assets/images/like.png';
+import likeImage from '../../assets/images/like.webp';
 import Playlist from '../../containers/Playlist/Playlist';
 import { getArtistName, getSongsDuration } from '../../shared/utils/playlist-utils';
 import { setPlaylistAction } from '../../store/slices/playlistSlice';
@@ -22,7 +22,7 @@ export default function LikedSongsPage(props: ILikedSongsPageProps) {
             const playlist: IPlaylistDetail = {
                 "id": 0,
                 "title": 'Liked Songs',
-                "image": like,
+                "image": likeImage,
                 "color": 'purple',
                 "featured": false,
                 "hide": false,

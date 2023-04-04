@@ -16,7 +16,8 @@ export const getSongsDuration = (songs: SongsType): string => {
 // Get readable information about the song artist
 export const getArtistName = (songs: SongsType): string => {
     if (!songs) return '';
-    const artists = songs.map(song => song.artists[0])
+    const artists = songs.map(song => song.artists[0].first_name + ' ' + song.artists[0].last_name)
+    // Remove duplicate artists
     const uniqueArtists = Array.from(new Set(artists))
     return uniqueArtists.join(', ')
 }

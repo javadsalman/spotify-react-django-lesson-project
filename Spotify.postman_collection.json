@@ -621,6 +621,252 @@
 									"body": "{\n    \"id\": 1,\n    \"first_name\": \"Bethoven\",\n    \"last_name\": \"\",\n    \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/images/Beethoven.jpg\",\n    \"cover\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/artist/covers/cover_3.jpg\",\n    \"verified\": false,\n    \"songs\": [\n        {\n            \"id\": 6,\n            \"title\": \"Phonk Remix\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/Beethoven.jpg\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/y2mate.com_-_BEETHOVEN_CLASSICAL_PHONK_REMIX_BY_MADEINNLINE.mp3\",\n            \"duration\": 160,\n            \"lyrics\": \"\",\n            \"listen_count\": 0,\n            \"updated\": \"2023-03-30\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                1\n            ],\n            \"genres\": [\n                4,\n                5\n            ],\n            \"playlists\": [\n                2,\n                4,\n                5\n            ]\n        },\n        {\n            \"id\": 1,\n            \"title\": \"Bazzy Fantazy\",\n            \"image\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/images/bazzi.webp\",\n            \"audio\": \"https://djangospotifybucket.s3.eu-north-1.amazonaws.com/songs/audios/bazzi-fantasy-mp3.mp3\",\n            \"duration\": 180,\n            \"lyrics\": \"\",\n            \"listen_count\": 0,\n            \"updated\": \"2023-04-02\",\n            \"created\": \"2023-03-30\",\n            \"artists\": [\n                2,\n                1\n            ],\n            \"genres\": [\n                4,\n                2\n            ],\n            \"playlists\": [\n                1,\n                2\n            ]\n        }\n    ]\n}"
 								}
 							]
+						},
+						{
+							"name": "Follow Artist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/follow-artist/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"follow-artist",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Follow Artist",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/follow-artist/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"follow-artist",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Apr 2023 11:15:40 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "OPTIONS, POST"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
+						},
+						{
+							"name": "Unfollow Artist",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/unfollow-artist/1/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"unfollow-artist",
+										"1",
+										""
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "Unfollow Artist",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Token b3a6c109fe7e39d796f42616573389e577e4db1e",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"user_info\": \"ehmed@gmail.com\",\r\n    \"password\": \"1234\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://127.0.0.1:8000/api/unfollow-artist/1/",
+											"protocol": "http",
+											"host": [
+												"127",
+												"0",
+												"0",
+												"1"
+											],
+											"port": "8000",
+											"path": [
+												"api",
+												"unfollow-artist",
+												"1",
+												""
+											]
+										}
+									},
+									"status": "Accepted",
+									"code": 202,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Tue, 04 Apr 2023 11:16:21 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.9.13"
+										},
+										{
+											"key": "Vary",
+											"value": "Accept, Origin"
+										},
+										{
+											"key": "Allow",
+											"value": "OPTIONS, POST"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "0"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": null
+								}
+							]
 						}
 					]
 				}

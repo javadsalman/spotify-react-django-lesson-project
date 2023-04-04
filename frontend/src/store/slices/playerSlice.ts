@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ISong } from "../../types";
+import { IArtistSummary, ISong } from "../../types";
 
 // player for playing song is managed from here
 
@@ -7,7 +7,7 @@ interface IState {
    songId: number;
    songImage: string;
    songTitle: string;
-   songArtists: string;
+   songArtists: IArtistSummary[];
    audioSrc: string;
    audioDuration: number;
    audioCurrentTime: number;
@@ -21,7 +21,7 @@ const initialState: IState = {
    songId: 0,
    songImage: "",
    songTitle: "",
-   songArtists: "",
+   songArtists: [],
    audioSrc: "",
    audioDuration: 0,
    audioCurrentTime: 0,
@@ -39,7 +39,7 @@ export const playerSlice = createSlice({
          state.audioSrc = action.payload.song.audio;
          state.songImage = action.payload.song.image;
          state.songTitle = action.payload.song.title;
-         state.songArtists = action.payload.song.artists.join(", ");
+         state.songArtists = action.payload.song.artists;
          state.songLiked = action.payload.song.liked;
          state.songId = action.payload.song.id;
          state.shouldPlay = action.payload.play;

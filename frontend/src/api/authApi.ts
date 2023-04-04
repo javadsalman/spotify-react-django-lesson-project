@@ -31,3 +31,11 @@ export function uploadProfilePhoto(file: File) {
     formData.append('image', file)
     return iaxios.patch('/customer-image-upload/', formData)
 }
+
+export function followArtist(id: number) {
+    return iaxios.post(`/follow-artist/${id}/`)
+}
+
+export function unfollowArtist(id: number) {
+    return iaxios.post(`/unfollow-artist/${id}/`)
+}

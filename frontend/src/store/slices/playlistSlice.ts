@@ -173,7 +173,12 @@ export const changePlaylistAndSongAction = createAsyncThunk<void, {playlist:IPla
 export const loadStoredPlaylist = createAsyncThunk(
    "loadStoredPlaylist",
    async (payload, { dispatch, getState }) => {
-      const lastPlayingInfo = JSON.parse(localStorage.getItem("lastPlayingInfo") || "{}") as lastPlayingInfoType;
+      const lastPlayingInfoJSON = localStorage.getItem("lastPlayingInfo");
+      // don't load if there is no last playing info
+      if (!lastPlayingInfoJSON) return;
+      const lastPlayingInfo = JSON.parse(lastPlayingInfoJSON) as lastPlayingInfoType;
+      // don't load if the last playlist is dummy. The id of dummy playlists is 0
+      if (lastPlayingInfo.lastSongId === 0) return;
       const response = await getPlaylistDetail(lastPlayingInfo.lastPlaylistId);
       const playlist = response.data;
       if (lastPlayingInfo && playlist) {
