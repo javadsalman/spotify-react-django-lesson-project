@@ -36,6 +36,9 @@ All of the necessary algorithms have comment. On the other hand, there is Postma
 ### Genres
 ![searching](./screenshots/searching.PNG)
 
+### Genres
+![artist](./screenshots/artist.PNG)
+
 ### Search
 ![search](./screenshots/search.PNG)
 
