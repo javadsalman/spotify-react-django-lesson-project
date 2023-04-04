@@ -37,6 +37,7 @@ export default function SongItem(props: ISongItemProps) {
             unlikeSong(props.song.id)
             .then(() => {
                 setLiked(false)
+                // if this song is playing, update the like status of the song in action bar.
                 if (isThisSongPlaying)
                     dispatch(setPlayerSongLikedStatus(false))
             })
@@ -44,6 +45,7 @@ export default function SongItem(props: ISongItemProps) {
             likeSong(props.song.id)
             .then(() => {
                 setLiked(true)
+                // if this song is playing, update the like status of the song in action bar.
                 if (isThisSongPlaying)
                     dispatch(setPlayerSongLikedStatus(true))
             })
