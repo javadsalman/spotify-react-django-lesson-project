@@ -66,6 +66,8 @@ export default function SongItem(props: ISongItemProps) {
         if (isThisSongPlaying) {
             setLiked(playerState.songLiked)
             setCurrentlyPlaying(playerState.audioIsPlaying)
+        } else {
+            setCurrentlyPlaying(false)
         }
     }, [ playerState.songLiked, playerState.audioIsPlaying, isThisSongPlaying])
 
